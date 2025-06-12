@@ -1,0 +1,36 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <cctype>  // for toupper
+
+using namespace std;
+
+int main() {
+    // Map for Morse code translation
+    map<char, string> morseCode = {
+        {'A', ".-"},    {'B', "-..."},  {'C', "-.-."}, {'D', "-.."},   {'E', "."},
+        {'F', "..-."},  {'G', "--."},   {'H', "...."}, {'I', ".."},    {'J', ".---"},
+        {'K', "-.-"},   {'L', ".-.."},  {'M', "--"},   {'N', "-."},    {'O', "---"},
+        {'P', ".--."},  {'Q', "--.-"},  {'R', ".-."},  {'S', "..."},   {'T', "-"},
+        {'U', "..-"},   {'V', "...-"},  {'W', ".--"},  {'X', "-..-"},  {'Y', "-.--"},
+        {'Z', "--.."},  {'0', "-----"}, {'1', ".----"},{'2', "..---"}, {'3', "...--"},
+        {'4', "....-"}, {'5', "....."}, {'6', "-...."},{'7', "--..."}, {'8', "---.."},
+        {'9', "----."}, {' ', " / "}  // Slash for space between words
+    };
+
+    string input;
+    cout << "Enter a message to convert to Morse code: ";
+    getline(cin, input);
+
+    cout << "Morse Code: ";
+    for (char c : input) {
+        c = toupper(c);  // Convert to uppercase
+        if (morseCode.find(c) != morseCode.end()) {
+            cout << morseCode[c] << " ";
+        } else {
+            cout << "? ";  // Unknown characters
+        }
+    }
+
+    cout << endl;
+    return 0;
